@@ -1,0 +1,378 @@
+//ПЕРЕМЕННЫЕ И ШРИФТЫ
+
+$header_bg: rgba(235, 235, 235, 0.6)
+$shadow: rgba(0, 0, 0, 0.25)
+$link_color_normal: rgb(77, 139, 255)
+$link_color_hover: rgb(57, 101, 184)
+$hint_gradient_gray: rgb(250, 250, 250)
+$tg_qr_background: rgba(0, 0, 0, 0.5)
+$clipboard_notif_background: rgba(0, 0, 0, 0.8)
+$highlighted_header_link: rgb(41, 41, 41)
+$hover_header_link: rgb(170, 170, 170)
+$card_border: rgb(162, 162, 162)
+$card_button: rgb(81, 136, 255)
+$card_button_hover: rgb(56, 92, 172)
+
+@font-face 
+    font-family: Montserrat
+    font-weight: 400
+    font-style: normal
+    src: url("../fonts/Montserrat-Regular.woff2")
+
+@font-face 
+    font-family: Montserrat
+    font-weight: 400
+    font-style: italic
+    src: url("../fonts/Montserrat-Italic.woff2")
+
+@font-face 
+    font-family: Montserrat
+    font-weight: 700
+    font-style: normal
+    src: url("../fonts/Montserrat-SemiBold.woff2")
+
+@font-face 
+    font-family: Montserrat
+    font-weight: 700
+    font-style: italic
+    src: url("../fonts/Montserrat-SemiBoldItalic.woff2")
+
+
+//ОБЩИЕ СТИЛИ
+
+*
+    box-sizing: border-box
+
+body
+    font-family: Montserrat, sans-serif
+    line-height: 1.2
+
+a
+    text-decoration: none
+    color: black
+
+.text-link
+    color: $link_color_normal
+    transition: all .4s ease
+    &:hover
+        color: $link_color_hover
+        font-size: 20.9px
+    &_telegram:hover
+        font-size: 52px
+
+.header-link
+    font-size: 24px
+    font-weight: 700
+    display: flex
+    column-gap: 40px
+    &_entry
+        padding: 1px
+        border-radius: 10px
+        transition: all .4s ease
+    &_entry:hover
+        background: $hover_header_link
+    &_highlighted
+        background: $highlighted_header_link
+        color: white
+
+button
+    border: none
+    background: none
+    padding: 0
+    cursor: pointer
+
+.hint
+    &__text
+        visibility: hidden
+        opacity: 0
+        position: absolute
+        padding: 3px
+        background-image: linear-gradient(to right, white, $hint_gradient_gray)
+        border: 1px solid black
+        border-radius: 10px
+        transition: all .4s ease
+        box-shadow: 0 0 10px 2px $shadow
+    &:hover .hint__text
+        visibility: visible //да простит меня господь
+        opacity: 1
+    &_logo
+        left: 100px
+        top: 18px
+
+h1
+    margin: 0
+    font-weight: 700
+    font-size: 36px
+h2
+    margin: 0
+    font-weight: 700
+    font-size: 24px
+
+p
+    font-weight: 400
+    font-size: 20px
+
+.container
+    max-width: 880px
+    margin: 0 auto
+
+.header
+    height: 80px
+    width: 100%
+    position: fixed
+    z-index: 1
+    y: 0
+    display: flex
+    align-items: center
+    background: $header_bg
+    backdrop-filter: blur(2px)
+    &__container
+        display: flex
+        position: relative
+        align-items: center
+        column-gap: 494px
+    &__logo
+        display: flex
+
+.logo
+    &__img
+        width: 86px
+        height: 69px
+
+.footer
+    height: 192px
+    width: 100%
+    background-image: linear-gradient(rgb(255, 255, 255), rgb(208, 208, 208))
+    display: flex
+    justify-content: center
+    &__links
+        display: flex
+        padding: 56px 0 94px 0
+        column-gap: 20px
+
+.footer-link-vk
+    width: 55px
+    transition: all .4s ease
+    &:hover
+        width: 70px
+.footer-link-telegram
+    width: 45px
+    transition: all .4s ease
+    &:hover
+        width: 60px
+.footer-link-discord
+    width: 53px
+    transition: all .4s ease
+    &:hover
+        width: 70px
+.footer-link-steam
+    width: 55px
+    transition: all .4s ease
+    &:hover
+        width: 70px
+
+.starting-overlay
+    position: fixed
+    z-index: 3
+    pointer-events: none
+    left: 0
+    top: 0
+    width: 100vw
+    height: 100vh
+    background: white
+    visibility: visible
+    opacity: 1
+    transition: all 1s ease
+    &_hidden
+        visibility: hidden
+        opacity: 0
+
+.telegram-qr-overlay
+    position: fixed
+    z-index: 2
+    top: 0
+    left: 0
+    visibility: hidden
+    opacity: 0
+    transition: all .4s ease
+    &_shown
+        visibility: visible
+        opacity: 1
+    &__container
+        position: relative
+        width: 100vw
+        height: 100vh
+        display: flex
+        align-items: center
+        background: $tg_qr_background
+    &__bg-close
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100vh
+    &__content
+        position: relative
+        width: 880px
+        margin: 0 auto
+        box-shadow: 0 0 10px 10px $shadow
+        border-radius: 50px
+        background: white
+        display: flex
+        align-items: center
+        justify-content: center
+        flex-direction: column
+        row-gap: 30px
+    &__img
+        width: 500px
+        margin-top: 50px
+    &__link
+        font-size: 48px
+        margin-bottom: 50px
+    &__close-button
+        position: absolute
+        left: 814px
+        top: 36px
+        transition: all .4s ease
+    &__close-button:hover
+        cursor: pointer
+        left: 811.5px
+        top: 33.5px
+    &__close-button-img
+        width: 30px
+        transition: all .4s ease
+    &__close-button-img:hover
+        width: 35px
+
+.clipboard-notification
+    position: fixed
+    left: 0
+    bottom: -100px
+    visibility: hidden
+    transition: all .4s ease
+    &_shown
+        bottom: 10px
+        visibility: visible
+    &__container
+        position: relative
+        width: 100vw
+        display: flex
+        justify-content: center
+    &__content
+        position: relative
+        display: flex
+        justify-content: center
+        background: $clipboard_notif_background
+        color: white
+        padding: 10px
+        border-radius: 10px
+
+
+//СТИЛИ ПЕРВОЙ СТРАНИЦЫ
+
+.odd-section
+    height: 420px
+    padding: 20px 0 45px 0
+    display: flex
+    column-gap: 20px
+    &__img
+        box-shadow: 4px 4px 10px $shadow
+
+.even-section
+    height: 420px
+    padding: 20px 0 45px 0
+    display: flex
+    flex-direction: row-reverse
+    column-gap: 20px
+    &__img
+        box-shadow: -4px 4px 10px $shadow
+
+.section-img
+    width: 355px
+    height: 355px
+    border-radius: 32px
+
+.section-text
+    display: flex
+    flex-direction: column
+    width: 505px
+    row-gap: 20px
+    &__main-text
+        display: flex
+        flex-direction: column
+        row-gap: 10px
+        position: relative
+    &__good-reading
+        padding-top: 35px
+
+.first-section
+    height: 520px
+    padding-top: 100px
+
+.sixth-section
+    height: 220px
+    padding: 20px 0
+    display: flex
+    flex-direction: column
+    row-gap: 20px
+    &__text
+        display: flex
+        flex-direction: column
+        row-gap: 20px
+    &__title
+        text-align: center
+
+
+//СТИЛИ ВТОРОЙ СТРАНИЦЫ
+
+.content-section
+    padding-top: 100px
+    display: flex
+    flex-direction: column
+    row-gap: 20px
+    align-items: center
+    &__cards
+        min-height: 680px
+        width: 100%
+
+.cards
+    &__entry
+        width: 280px
+        height: 350px
+        border: 2px solid $card_border
+        border-radius: 20px
+        box-shadow: 4px 4px 10px 0 $shadow
+        display: flex
+        flex-direction: column
+        align-items: center
+    &__img-container
+        margin-top: 17px
+    &__img
+        border-radius: 20px
+        box-shadow: 2px 2px 4px 0 $shadow
+    &__text
+        margin-top: 10px
+        padding: 0 18px
+        display: flex
+        flex-direction: column
+        row-gap: 15px
+    &__button
+        position: relative
+        left: 0
+        top: 0
+        margin-bottom: 17px
+        margin-top: auto
+        background: $card_button
+        padding: 14px 20px
+        border-radius: 20px
+        font-size: 20px
+        font-weight: 700
+        color: white
+        box-shadow: 2px 2px 4px 0 $shadow
+        transition: all .2s ease
+    &__button:hover
+        background: $card_button_hover
+    &__button:active
+        left: 2px
+        top: 2px
+        box-shadow: 0 0 4px 2px $shadow

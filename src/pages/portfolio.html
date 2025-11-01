@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Портфолио</title>
+
+        <link rel="stylesheet" href="../css/reset.css">
+        <link rel="stylesheet" href="../css/normalize.css">
+        <link rel="stylesheet" href="../css/style.css">
+
+        <script src="../js/script.js" defer></script>
+    </head>
+
+    <body>
+        <header class="header">
+            <div class="header__container container">
+                <div class="header__logo logo hint">
+                    <img class="logo__img" src="../icons/logo.svg" alt="LOGO">
+                    <p class="hint__text hint_logo">Это, типа, роспись</p>
+                </div>
+
+                <div class="header__links header-link">
+                    <a class="header-link_entry header-link__about" href="../index.html">Обо мне</a>
+                    <a class="header-link_entry header-link__portfolio header-link_highlighted" href="#">Портфолио</a>
+                </div>
+            </div>
+        </header>
+
+        <section class="content-section container">
+            <div class="content-section__title">
+                <h1>Мои проекты</h1>
+            </div>
+
+            <div class="content-section__cards cards">
+                <div class="cards__entry">
+                    <div class="cards__img-container">
+                        <img class="cards__img" src="../img/tig.png" alt="TIG">
+                    </div>
+
+                    <div class="cards__text">
+                        <h2>Troubles in Goiky</h2>
+                        <p>Мой мод на Hearts of Iron IV.</p>
+                    </div>
+
+                    <a class="cards__button" href="https://github.com/commiebasil/bfdimod" target="_blank">Посмотреть</a>
+                </div>
+            </div>
+        </section>
+
+        <footer class="footer">
+            <div class="footer__links">
+                <a class="footer-link-vk" href="https://vk.com/thalmannpioneer" target="_blank">
+                    <div class="footer-link-vk__img">
+                        <img src="../icons/vk.svg" alt="VK">
+                    </div>
+                </a>
+                <button class="footer-link-telegram" onclick="telegramQrShow()">
+                    <div class="footer-link-telegram__img">
+                        <img src="../icons/telegram.svg" alt="TELEGRAM">
+                    </div>
+                </button>
+                <button class="footer-link-discord" onclick="discordIdCopy()">
+                    <div class="footer-link-discord__img">
+                        <img src="../icons/discord.svg" alt="DISCORD">
+                    </div>
+                </button>
+                <a class="footer-link-steam" href="https://steamcommunity.com/id/CommunistPartyOfNigeria/" target="_blank">
+                    <div class="footer-link-steam__img">
+                        <img src="../icons/steam.svg" alt="STEAM">
+                    </div>
+                </a>
+            </div>
+        </footer>
+
+
+        <!--Ниже всякие временные секции, которые появляются только при определённых условиях-->
+
+        <section class="starting-overlay"></section>
+
+        <section class="telegram-qr-overlay">
+            <div class="telegram-qr-overlay__container">
+                <button class="telegram-qr-overlay__bg-close" onclick="telegramQrHide()"></button>
+                <div class="telegram-qr-overlay__content">
+                    <img class="telegram-qr-overlay__img" src="../img/telegram_qr.png" alt="TELEGRAM_QR">
+                    <a class="telegram-qr-overlay__link text-link text-link_telegram" href="https://t.me/thalmannpioneer" target="_blank">@thalmannpioneer</a>
+                    <button class="telegram-qr-overlay__close-button" onclick="telegramQrHide()"><img class="telegram-qr-overlay__close-button-img" src="../icons/close_button.svg" alt="CLOSE_BUTTON"></button>
+                </div>
+            </div>
+        </section>
+
+        <section class="clipboard-notification">
+            <div class="clipboard-notification__container">
+                <div class="clipboard-notification__content">
+                    <p>Айди скопирован!</p>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>
