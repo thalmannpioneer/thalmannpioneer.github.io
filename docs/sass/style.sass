@@ -1,6 +1,7 @@
 //ПЕРЕМЕННЫЕ И ШРИФТЫ
 
 $header_bg: rgba(235, 235, 235, 0.6)
+$equations_header_bg: rgba(70, 178, 255, 0.6)
 $shadow: rgba(0, 0, 0, 0.25)
 $link_color_normal: rgb(77, 139, 255)
 $link_color_hover: rgb(57, 101, 184)
@@ -8,10 +9,13 @@ $hint_gradient_gray: rgb(250, 250, 250)
 $tg_qr_background: rgba(0, 0, 0, 0.5)
 $clipboard_notif_background: rgba(0, 0, 0, 0.8)
 $highlighted_header_link: rgb(41, 41, 41)
-$hover_header_link: rgb(170, 170, 170)
+$hover_header_link: rgba(0, 0, 0, 0.4)
 $card_border: rgb(162, 162, 162)
-$card_button: rgb(81, 136, 255)
-$card_button_hover: rgb(56, 92, 172)
+$full_button: rgb(81, 136, 255)
+$green_button: rgb(99, 194, 120)
+$full_button_hover: rgb(56, 92, 172)
+$green_button_hover: rgb(72, 136, 86)
+$equation_bg: rgb(227, 241, 255)
 
 @font-face 
     font-family: Montserrat
@@ -37,6 +41,12 @@ $card_button_hover: rgb(56, 92, 172)
     font-style: italic
     src: url("../fonts/Montserrat-SemiBoldItalic.woff2")
 
+@font-face
+    font-family: STIXTwoMath
+    font-weight: 400
+    font-style: normal
+    src: url("../fonts/STIXTwoMath-Regular.woff2")
+
 
 //ОБЩИЕ СТИЛИ
 
@@ -49,6 +59,16 @@ body
 
 a
     text-decoration: none
+    color: black
+
+textarea
+    resize: none
+    font-family: STIXTwoMath, serif
+    font-size: 36px
+
+.output
+    border: none
+    background: none
     color: black
 
 .text-link
@@ -65,6 +85,8 @@ a
     font-weight: 700
     display: flex
     column-gap: 40px
+    &_equations
+        color: white
     &_entry
         padding: 1px
         border-radius: 10px
@@ -80,6 +102,34 @@ button
     background: none
     padding: 0
     cursor: pointer
+
+.full-button
+    position: relative
+    left: 0
+    top: 0
+    background: $full_button
+    padding: 14px 20px
+    border-radius: 20px
+    font-size: 18px
+    font-weight: 700
+    color: white
+    box-shadow: 2px 2px 4px 0 $shadow
+    transition: all .2s ease
+    &:hover
+        background: $full_button_hover
+    &:active
+        left: 2px
+        top: 2px
+        box-shadow: 0 0 4px 2px $shadow
+
+.green-button
+    background: $green_button
+    &:hover
+        background: $green_button_hover
+    &:active
+        left: 2px
+        top: 2px
+        box-shadow: 0 0 4px 2px $shadow
 
 .hint
     &__text
@@ -112,6 +162,10 @@ p
     font-weight: 400
     font-size: 20px
 
+.math-text
+    font-family: STIXTwoMath, serif
+    font-size: 36px
+
 .container
     max-width: 880px
     margin: 0 auto
@@ -126,6 +180,8 @@ p
     align-items: center
     background: $header_bg
     backdrop-filter: blur(2px)
+    &_equations
+        background: $equations_header_bg
     &__container
         display: flex
         position: relative
@@ -145,10 +201,15 @@ p
     background-image: linear-gradient(rgb(255, 255, 255), rgb(208, 208, 208))
     display: flex
     justify-content: center
+    &_equations
+        background-image: linear-gradient(rgb(255, 255, 255), rgb(211, 237, 255))
     &__links
         display: flex
         padding: 56px 0 94px 0
         column-gap: 20px
+
+.equations-footer-icon
+    width: 100%
 
 .footer-link-vk
     width: 55px
@@ -244,7 +305,7 @@ p
     &__close-button-img:hover
         width: 35px
 
-.clipboard-notification
+.notification
     position: fixed
     left: 0
     bottom: -100px
@@ -336,9 +397,11 @@ p
         width: 100%
 
 .cards
+    display: flex
+    align-items: flex-start
+    column-gap: 20px
     &__entry
         width: 280px
-        height: 350px
         border: 2px solid $card_border
         border-radius: 20px
         box-shadow: 4px 4px 10px 0 $shadow
@@ -355,24 +418,144 @@ p
         padding: 0 18px
         display: flex
         flex-direction: column
-        row-gap: 15px
+        row-gap: 10px
+    &__buttons
+        margin: 20px auto 17px auto
+        display: flex
+        justify-content: center
+        width: 240px
+        column-gap: 10px
     &__button
-        position: relative
-        left: 0
-        top: 0
-        margin-bottom: 17px
-        margin-top: auto
-        background: $card_button
-        padding: 14px 20px
-        border-radius: 20px
-        font-size: 20px
-        font-weight: 700
-        color: white
-        box-shadow: 2px 2px 4px 0 $shadow
-        transition: all .2s ease
-    &__button:hover
-        background: $card_button_hover
-    &__button:active
-        left: 2px
-        top: 2px
-        box-shadow: 0 0 4px 2px $shadow
+        flex-grow: 0.4
+        display: flex
+        justify-content: center
+    &__button-img
+        height: 23px
+#tig_github
+    flex-grow: 3
+
+
+//СТИЛИ УРАВНЕНИЙ
+
+.equations-first-section
+    padding-top: 100px
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    row-gap: 28px
+    visibility: visible
+    opacity: 1
+    transition: all .4s ease
+    &__buttons
+        display: flex
+        column-gap: 20px
+
+.system
+    min-width: 574px
+    height: 305px
+    background: $equation_bg
+    border-radius: 30px
+    display: flex
+    align-items: center
+    padding: 0 12px
+    visibility: visible
+    opacity: 1
+    transition: all .1s ease
+    &__input-container
+        display: flex
+        align-items: center
+        column-gap: 2px
+    &__input, &__resultant-input
+        max-width: 100px
+        min-width: 36px
+        width: 36px
+        border-radius: 10px
+        border: 1px solid black
+        transition: background .4s ease
+        text-align: center
+    &__operation-selection
+        font-family: STIXTwoMath, serif
+        font-size: 36px
+        background: white
+        border-radius: 10px
+        border: 1px solid black
+    &__lines
+        display: flex
+        flex-direction: column
+        row-gap: 42px
+    &__line
+        display: flex
+        align-items: center
+        column-gap: 20px
+    &_hidden
+        visibility: hidden
+        opacity: 0
+
+.equations-second-section
+    margin: 40px auto
+    display: flex
+    align-items: flex-start
+    flex-direction: column
+    row-gap: 30px
+    visibility: hidden
+    opacity: 0
+    transition: all .1s ease
+    &_visible
+        visibility: visible
+        opacity: 1
+    &__variables
+        visibility: hidden
+        opacity: 0
+        &_visible
+            visibility: visible
+            opacity: 1
+
+.delta
+    display: flex
+    align-items: center
+    column-gap: 16px
+    background: $equation_bg
+    padding: 12px
+    border-radius: 30px
+    &__right-equation
+        display: flex
+        align-items: center
+        column-gap: 15px
+    &__output
+        max-width: 200px
+        min-width: 36px
+        width: 36px
+
+.matrix
+    display: flex
+    flex-direction: column
+    row-gap: 20px
+    padding: 0 10px
+    border: 2px solid black
+    border-top: 0
+    border-bottom: 0
+    &__line
+        display: flex
+        column-gap: 10px
+    &__output
+        max-width: 200px
+        min-width: 36px
+        width: 36px
+        text-align: center
+
+.variables
+    display: flex
+    align-items: center
+    column-gap: 20px
+    background: $equation_bg
+    padding: 12px
+    border-radius: 30px
+    &__output
+        max-width: 200px
+        min-width: 36px
+        width: 36px
+
+.variable
+    display: flex
+    align-items: center
+    column-gap: 10px

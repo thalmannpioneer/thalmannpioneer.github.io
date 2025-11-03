@@ -22,6 +22,12 @@
   font-style: italic;
   src: url("../fonts/Montserrat-SemiBoldItalic.woff2");
 }
+@font-face {
+  font-family: STIXTwoMath;
+  font-weight: 400;
+  font-style: normal;
+  src: url("../fonts/STIXTwoMath-Regular.woff2");
+}
 * {
   box-sizing: border-box;
 }
@@ -33,6 +39,18 @@ body {
 
 a {
   text-decoration: none;
+  color: black;
+}
+
+textarea {
+  resize: none;
+  font-family: STIXTwoMath, serif;
+  font-size: 36px;
+}
+
+.output {
+  border: none;
+  background: none;
   color: black;
 }
 
@@ -55,13 +73,16 @@ a {
   -moz-column-gap: 40px;
        column-gap: 40px;
 }
+.header-link_equations {
+  color: white;
+}
 .header-link_entry {
   padding: 1px;
   border-radius: 10px;
   transition: all 0.4s ease;
 }
 .header-link_entry:hover {
-  background: rgb(170, 170, 170);
+  background: rgba(0, 0, 0, 0.4);
 }
 .header-link_highlighted {
   background: rgb(41, 41, 41);
@@ -73,6 +94,40 @@ button {
   background: none;
   padding: 0;
   cursor: pointer;
+}
+
+.full-button {
+  position: relative;
+  left: 0;
+  top: 0;
+  background: rgb(81, 136, 255);
+  padding: 14px 20px;
+  border-radius: 20px;
+  font-size: 18px;
+  font-weight: 700;
+  color: white;
+  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
+  transition: all 0.2s ease;
+}
+.full-button:hover {
+  background: rgb(56, 92, 172);
+}
+.full-button:active {
+  left: 2px;
+  top: 2px;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
+}
+
+.green-button {
+  background: rgb(99, 194, 120);
+}
+.green-button:hover {
+  background: rgb(72, 136, 86);
+}
+.green-button:active {
+  left: 2px;
+  top: 2px;
+  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
 }
 
 .hint__text {
@@ -112,6 +167,11 @@ p {
   font-size: 20px;
 }
 
+.math-text {
+  font-family: STIXTwoMath, serif;
+  font-size: 36px;
+}
+
 .container {
   max-width: 880px;
   margin: 0 auto;
@@ -128,6 +188,9 @@ p {
   background: rgba(235, 235, 235, 0.6);
   -webkit-backdrop-filter: blur(2px);
           backdrop-filter: blur(2px);
+}
+.header_equations {
+  background: rgba(70, 178, 255, 0.6);
 }
 .header__container {
   display: flex;
@@ -152,11 +215,18 @@ p {
   display: flex;
   justify-content: center;
 }
+.footer_equations {
+  background-image: linear-gradient(rgb(255, 255, 255), rgb(211, 237, 255));
+}
 .footer__links {
   display: flex;
   padding: 56px 0 94px 0;
   -moz-column-gap: 20px;
        column-gap: 20px;
+}
+
+.equations-footer-icon {
+  width: 100%;
 }
 
 .footer-link-vk {
@@ -277,24 +347,24 @@ p {
   width: 35px;
 }
 
-.clipboard-notification {
+.notification {
   position: fixed;
   left: 0;
   bottom: -100px;
   visibility: hidden;
   transition: all 0.4s ease;
 }
-.clipboard-notification_shown {
+.notification_shown {
   bottom: 10px;
   visibility: visible;
 }
-.clipboard-notification__container {
+.notification__container {
   position: relative;
   width: 100vw;
   display: flex;
   justify-content: center;
 }
-.clipboard-notification__content {
+.notification__content {
   position: relative;
   display: flex;
   justify-content: center;
@@ -382,9 +452,14 @@ p {
   width: 100%;
 }
 
+.cards {
+  display: flex;
+  align-items: flex-start;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
 .cards__entry {
   width: 280px;
-  height: 350px;
   border: 2px solid rgb(162, 162, 162);
   border-radius: 20px;
   box-shadow: 4px 4px 10px 0 rgba(0, 0, 0, 0.25);
@@ -404,28 +479,178 @@ p {
   padding: 0 18px;
   display: flex;
   flex-direction: column;
-  row-gap: 15px;
+  row-gap: 10px;
+}
+.cards__buttons {
+  margin: 20px auto 17px auto;
+  display: flex;
+  justify-content: center;
+  width: 240px;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
 }
 .cards__button {
-  position: relative;
-  left: 0;
-  top: 0;
-  margin-bottom: 17px;
-  margin-top: auto;
-  background: rgb(81, 136, 255);
-  padding: 14px 20px;
-  border-radius: 20px;
-  font-size: 20px;
-  font-weight: 700;
-  color: white;
-  box-shadow: 2px 2px 4px 0 rgba(0, 0, 0, 0.25);
-  transition: all 0.2s ease;
+  flex-grow: 0.4;
+  display: flex;
+  justify-content: center;
 }
-.cards__button:hover {
-  background: rgb(56, 92, 172);
+.cards__button-img {
+  height: 23px;
 }
-.cards__button:active {
-  left: 2px;
-  top: 2px;
-  box-shadow: 0 0 4px 2px rgba(0, 0, 0, 0.25);
+
+#tig_github {
+  flex-grow: 3;
+}
+
+.equations-first-section {
+  padding-top: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  row-gap: 28px;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.4s ease;
+}
+.equations-first-section__buttons {
+  display: flex;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+
+.system {
+  min-width: 574px;
+  height: 305px;
+  background: rgb(227, 241, 255);
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  padding: 0 12px;
+  visibility: visible;
+  opacity: 1;
+  transition: all 0.1s ease;
+}
+.system__input-container {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 2px;
+       column-gap: 2px;
+}
+.system__input, .system__resultant-input {
+  max-width: 100px;
+  min-width: 36px;
+  width: 36px;
+  border-radius: 10px;
+  border: 1px solid black;
+  transition: background 0.4s ease;
+  text-align: center;
+}
+.system__operation-selection {
+  font-family: STIXTwoMath, serif;
+  font-size: 36px;
+  background: white;
+  border-radius: 10px;
+  border: 1px solid black;
+}
+.system__lines {
+  display: flex;
+  flex-direction: column;
+  row-gap: 42px;
+}
+.system__line {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+}
+.system_hidden {
+  visibility: hidden;
+  opacity: 0;
+}
+
+.equations-second-section {
+  margin: 40px auto;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  row-gap: 30px;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.1s ease;
+}
+.equations-second-section_visible {
+  visibility: visible;
+  opacity: 1;
+}
+.equations-second-section__variables {
+  visibility: hidden;
+  opacity: 0;
+}
+.equations-second-section__variables_visible {
+  visibility: visible;
+  opacity: 1;
+}
+
+.delta {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 16px;
+       column-gap: 16px;
+  background: rgb(227, 241, 255);
+  padding: 12px;
+  border-radius: 30px;
+}
+.delta__right-equation {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 15px;
+       column-gap: 15px;
+}
+.delta__output {
+  max-width: 200px;
+  min-width: 36px;
+  width: 36px;
+}
+
+.matrix {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+  padding: 0 10px;
+  border: 2px solid black;
+  border-top: 0;
+  border-bottom: 0;
+}
+.matrix__line {
+  display: flex;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.matrix__output {
+  max-width: 200px;
+  min-width: 36px;
+  width: 36px;
+  text-align: center;
+}
+
+.variables {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  background: rgb(227, 241, 255);
+  padding: 12px;
+  border-radius: 30px;
+}
+.variables__output {
+  max-width: 200px;
+  min-width: 36px;
+  width: 36px;
+}
+
+.variable {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
 }/*# sourceMappingURL=style.css.map */

@@ -16,8 +16,8 @@ function telegramQrHide() {
 function discordIdCopy() {
         navigator.clipboard.writeText("thalmannpioneer");
 
-        clipboardNotificationContainer.classList.add("clipboard-notification_shown");
-        setTimeout(() => { clipboardNotificationContainer.classList.remove("clipboard-notification_shown"); }, 1000);
+        clipboardNotificationContainer.classList.add("notification_shown");
+        setTimeout(() => { clipboardNotificationContainer.classList.remove("notification_shown"); }, 1000);
 }
 
 //действия при загрузке

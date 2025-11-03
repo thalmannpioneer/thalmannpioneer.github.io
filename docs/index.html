@@ -5,18 +5,20 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <title>Обо мне</title>
 
-        <link rel="stylesheet" href="css/reset.css">
-        <link rel="stylesheet" href="css/normalize.css">
-        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="./css/reset.css">
+        <link rel="stylesheet" href="./css/normalize.css">
+        <link rel="stylesheet" href="./css/style.css">
 
-        <script src="js/script.js" defer></script>
+        <script src="./js/script.js" defer></script>
+
+        <link rel="icon" href="./favicon.ico">
     </head>
 
     <body>
         <header class="header">
             <div class="header__container container">
                 <div class="header__logo logo hint">
-                    <img class="logo__img" src="icons/logo.svg" alt="LOGO">
+                    <img class="logo__img" src="./icons/logo.svg" alt="LOGO">
                     <p class="hint__text hint_logo">Это, типа, роспись</p>
                 </div>
 
@@ -29,7 +31,7 @@
 
         <section class="first-section odd-section container">
             <div class="odd-section__img section-img">
-                <img src="img/avatar.png" alt="AVATAR">
+                <img src="./img/avatar.png" alt="AVATAR">
             </div>
 
             <div class="odd-section__text section-text">
@@ -47,7 +49,7 @@
 
         <section class="second-section even-section container">
             <div class="even-section__img section-img">
-                <img src="img/hobbies.png" alt="HOBBIES">
+                <img src="./img/hobbies.png" alt="HOBBIES">
             </div>
 
             <div class="even-section__text section-text">
@@ -66,7 +68,7 @@
 
         <section class="third-section odd-section container">
             <div class="odd-section__img section-img">
-                <img src="img/films.png" alt="FILMS">
+                <img src="./img/films.png" alt="FILMS">
             </div>
 
             <div class="odd-section__text section-text">
@@ -85,7 +87,7 @@
 
         <section class="fourth-section even-section container">
             <div class="even-section__img section-img">
-                <img src="img/music.png" alt="MUSIC">
+                <img src="./img/music.png" alt="MUSIC">
             </div>
 
             <div class="even-section__text section-text">
@@ -103,7 +105,7 @@
 
         <section class="fifth-section odd-section container">
             <div class="odd-section__img section-img">
-                <img src="img/literature.png" alt="LITERATURE">
+                <img src="./img/literature.png" alt="LITERATURE">
             </div>
 
             <div class="odd-section__text section-text">
@@ -135,22 +137,22 @@
             <div class="footer__links">
                 <a class="footer-link-vk" href="https://vk.com/thalmannpioneer" target="_blank">
                     <div class="footer-link-vk__img">
-                        <img src="icons/vk.svg" alt="VK">
+                        <img src="./icons/vk.svg" alt="VK">
                     </div>
                 </a>
                 <button class="footer-link-telegram" onclick="telegramQrShow()">
                     <div class="footer-link-telegram__img">
-                        <img src="icons/telegram.svg" alt="TELEGRAM">
+                        <img src="./icons/telegram.svg" alt="TELEGRAM">
                     </div>
                 </button>
                 <button class="footer-link-discord" onclick="discordIdCopy()">
                     <div class="footer-link-discord__img">
-                        <img src="icons/discord.svg" alt="DISCORD">
+                        <img src="./icons/discord.svg" alt="DISCORD">
                     </div>
                 </button>
                 <a class="footer-link-steam" href="https://steamcommunity.com/id/CommunistPartyOfNigeria/" target="_blank">
                     <div class="footer-link-steam__img">
-                        <img src="icons/steam.svg" alt="STEAM">
+                        <img src="./icons/steam.svg" alt="STEAM">
                     </div>
                 </a>
             </div>
@@ -165,16 +167,16 @@
             <div class="telegram-qr-overlay__container">
                 <button class="telegram-qr-overlay__bg-close" onclick="telegramQrHide()"></button>
                 <div class="telegram-qr-overlay__content">
-                    <img class="telegram-qr-overlay__img" src="img/telegram_qr.png" alt="TELEGRAM_QR">
+                    <img class="telegram-qr-overlay__img" src="./img/telegram_qr.png" alt="TELEGRAM_QR">
                     <a class="telegram-qr-overlay__link text-link text-link_telegram" href="https://t.me/thalmannpioneer" target="_blank">@thalmannpioneer</a>
                     <button class="telegram-qr-overlay__close-button" onclick="telegramQrHide()"><img class="telegram-qr-overlay__close-button-img" src="icons/close_button.svg" alt="CLOSE_BUTTON"></button>
                 </div>
             </div>
         </section>
 
-        <section class="clipboard-notification">
-            <div class="clipboard-notification__container">
-                <div class="clipboard-notification__content">
+        <section class="clipboard-notification notification">
+            <div class="notification__container">
+                <div class="notification__content">
                     <p>Айди скопирован!</p>
                 </div>
             </div>
