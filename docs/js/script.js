@@ -22,3 +22,4 @@ function discordIdCopy() {
 
 //действия при загрузке
 startingOverlayContainer.classList.add("starting-overlay_hidden");
+localStorage.clear();
