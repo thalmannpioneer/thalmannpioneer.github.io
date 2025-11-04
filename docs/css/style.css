@@ -33,8 +33,11 @@
 }
 
 body {
+  min-height: 100vh;
   font-family: Montserrat, sans-serif;
   line-height: 1.2;
+  display: flex;
+  flex-direction: column;
 }
 
 a {
@@ -217,6 +220,7 @@ p {
   background-image: linear-gradient(rgb(255, 255, 255), rgb(208, 208, 208));
   display: flex;
   justify-content: center;
+  margin: auto auto 0 auto;
 }
 .footer_equations {
   background-image: linear-gradient(rgb(255, 255, 255), rgb(211, 237, 255));
@@ -312,7 +316,8 @@ p {
 }
 .telegram-qr-overlay__content {
   position: relative;
-  width: 880px;
+  width: min(880px, 61.1111111111vw);
+  min-width: 340px;
   margin: 0 auto;
   box-shadow: 0 0 10px 10px rgba(0, 0, 0, 0.25);
   border-radius: 50px;
@@ -324,23 +329,24 @@ p {
   row-gap: 30px;
 }
 .telegram-qr-overlay__img {
-  width: 500px;
+  width: min(500px, 34.7222222222vw);
+  min-width: 300px;
   margin-top: 50px;
 }
 .telegram-qr-overlay__link {
-  font-size: 48px;
+  font-size: min(48px, max(3.3333333333vw, 32px));
   margin-bottom: 50px;
 }
 .telegram-qr-overlay__close-button {
   position: absolute;
-  left: 814px;
-  top: 36px;
+  left: min(814px, max(56.5277777778vw, 280px));
+  top: min(36px, 2.5vw);
   transition: all 0.4s ease;
 }
 .telegram-qr-overlay__close-button:hover {
   cursor: pointer;
-  left: 811.5px;
-  top: 33.5px;
+  left: min(811.5px, max(56.3541666667vw, 278.5px));
+  top: min(33.5px, 2.3263888889vw);
 }
 .telegram-qr-overlay__close-button-img {
   width: 30px;
@@ -454,7 +460,7 @@ p {
   align-items: center;
 }
 .content-section__cards {
-  min-height: 680px;
+  min-height: 800px;
   width: 100%;
 }
 
