@@ -168,6 +168,8 @@ p
 .math-text
     font-family: STIXTwoMath, serif
     font-size: 36px
+.power
+    font-size: 24px
 
 .container
     max-width: 880px
@@ -209,6 +211,7 @@ p
     margin: auto auto 0 auto
     &_equations
         background-image: linear-gradient(rgb(255, 255, 255), rgb(211, 237, 255))
+        min-width: 574px
     &__links
         display: flex
         padding: 56px 0 94px 0
@@ -453,6 +456,8 @@ p
 
 .equations-first-section
     padding-top: 100px
+    width: min(880px, calc(880px * 100vw / 1440px))
+    min-width: 574px
     display: flex
     flex-direction: column
     align-items: flex-start
@@ -507,6 +512,9 @@ p
 
 .equations-second-section
     margin: 40px auto
+    position: relative
+    width: min(880px, calc(880px * 100vw / 1440px))
+    min-width: 420px
     display: flex
     align-items: flex-start
     flex-direction: column
@@ -556,6 +564,20 @@ p
         min-width: 36px
         width: 36px
         text-align: center
+
+.reverse-matrix
+    display: flex
+    flex-direction: column
+    row-gap: 30px
+    background: $equation_bg
+    padding: 12px
+    border-radius: 30px
+    &__wrapper
+        display: flex
+        align-items: center
+        column-gap: 10px
+    &__first-matrix, &__second-matrix
+        border-radius: 20%
 
 .variables
     display: flex

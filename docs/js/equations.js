@@ -4,7 +4,7 @@ let systemContainer = document.getElementsByClassName("system")[0];
 let matrixInputs = document.getElementsByClassName("system__input");
 let resultantsInputs = document.getElementsByClassName("system__resultant-input");
 let signInputs = document.getElementsByClassName("system__operation-selection");
-let matrixOutputs = document.getElementsByClassName("matrix__output");
+let matrixOutputs = document.getElementsByClassName("delta-matrix__output");
 let deltaOutput = document.getElementsByClassName("delta__output")[0];
 let varsOutput = document.getElementsByClassName("variables__output");
 let nanNotification = document.getElementsByClassName("nan-notification")[0];
@@ -12,6 +12,8 @@ let absResNotification = document.getElementsByClassName("absres-notification")[
 let resultContainer = document.getElementsByClassName("equations-second-section")[0];
 let secondTitle = document.getElementById("equations-secondtitle");
 let variablesContainer = document.getElementsByClassName("equations-second-section__variables")[0];
+let firstReverseMatrixOutputs = document.getElementsByClassName("reserve-matrix__first-output");
+let secondReverseMatrixOutputs = document.getElementsByClassName("reserve-matrix__second-output");
 
 function computeDelta(matrix) {
     let result = 0;
@@ -43,6 +45,53 @@ function computeDelta(matrix) {
     }
 
     return result;
+}
+
+function computeReverseMatrix(matrix) {
+    let result = [];
+
+    let powCount = 0;
+    for(let i = 0; i < 3; i++) {
+        for(let j = 0; j < 3; j++) {
+            result.push(computeSmallMatrix(matrix, j, i) * Math.pow(-1, powCount));
+            powCount++;
+        }
+    }
+
+    return result;
+}
+
+function computeSmallMatrix(matrix, x, y) {
+    let smallMatrix = [];
+    for(let i = 0; i < 3; i++) {
+        if(i == y) continue;
+        for(let j = 0; j < 3; j++) {
+            if(j == x) continue;
+            smallMatrix.push(matrix[j + i * 3]);
+        }
+    }
+
+    // console.log(smallMatrix);
+
+    return smallMatrix[0] * smallMatrix[3] - smallMatrix[1] * smallMatrix[2];
+}
+
+function transportMatrix(matrix) {
+    let result = [];
+
+    for(let i = 0; i < 3; i++) for(let j = 0; j < 3; j++) result.push(matrix[i + j * 3]);
+    
+    return result;
+}
+
+function drawMatrix(outputs, values) {
+    let maxWidth = 0;
+
+    for(let i = 0; i < 9; i++) {
+        outputs[i].value = String(values[i]);
+        maxWidth = Math.max(maxWidth, outputs[i].value.length * 30);
+    }
+    for(let i = 0; i < 9; i++) outputs[i].style.width = maxWidth + "px";
 }
 
 function computeEquation() {
@@ -115,23 +164,27 @@ function computeEquation() {
     zMatrix[5] = resultants[1];
     zMatrix[8] = resultants[2];
 
+    let firstReverseMatrix = computeReverseMatrix(convertedInputs);
+    let secondReverseMatrix = transportMatrix(firstReverseMatrix);
+
+    // console.log(firstReverseMatrix);
+    // console.log(secondReverseMatrix);
+
     let x = computeDelta(xMatrix) / delta;
     let y = computeDelta(yMatrix) / delta;
     let z = computeDelta(zMatrix) / delta;
 
     // console.log(`${x}, ${y}, ${z}`);
 
-    let maxWidth = 0;
-    for(let i = 0; i < 9; i++) {
-        matrixOutputs[i].value = String(convertedInputs[i]);
-        maxWidth = Math.max(maxWidth, matrixOutputs[i].value.length * 30);
-    }
-    for(let i = 0; i < 9; i++) matrixOutputs[i].style.width = maxWidth + "px";
+    drawMatrix(matrixOutputs, convertedInputs);
 
     deltaOutput.value = String(delta);
     deltaOutput.style.width = deltaOutput.value.length * 30 + "px";
 
-    maxWidth = 0;
+    drawMatrix(firstReverseMatrixOutputs, firstReverseMatrix);
+    drawMatrix(secondReverseMatrixOutputs, secondReverseMatrix);
+
+    let maxWidth = 0;
     varsOutput[0].value = isFinite(x) ? parseFloat(x.toFixed(3)) : "0/" + delta;
     maxWidth = varsOutput[0].value.length * 30;
     varsOutput[1].value = isFinite(y) ? parseFloat(y.toFixed(3)) : "0/" + delta;

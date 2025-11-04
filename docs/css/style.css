@@ -175,6 +175,10 @@ p {
   font-size: 36px;
 }
 
+.power {
+  font-size: 24px;
+}
+
 .container {
   max-width: 880px;
   margin: 0 auto;
@@ -224,6 +228,7 @@ p {
 }
 .footer_equations {
   background-image: linear-gradient(rgb(255, 255, 255), rgb(211, 237, 255));
+  min-width: 574px;
 }
 .footer__links {
   display: flex;
@@ -519,6 +524,8 @@ p {
 
 .equations-first-section {
   padding-top: 100px;
+  width: min(880px, 61.1111111111vw);
+  min-width: 574px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
@@ -585,6 +592,9 @@ p {
 
 .equations-second-section {
   margin: 40px auto;
+  position: relative;
+  width: min(880px, 61.1111111111vw);
+  min-width: 420px;
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -646,6 +656,24 @@ p {
   min-width: 36px;
   width: 36px;
   text-align: center;
+}
+
+.reverse-matrix {
+  display: flex;
+  flex-direction: column;
+  row-gap: 30px;
+  background: rgb(227, 241, 255);
+  padding: 12px;
+  border-radius: 30px;
+}
+.reverse-matrix__wrapper {
+  display: flex;
+  align-items: center;
+  -moz-column-gap: 10px;
+       column-gap: 10px;
+}
+.reverse-matrix__first-matrix, .reverse-matrix__second-matrix {
+  border-radius: 20%;
 }
 
 .variables {
