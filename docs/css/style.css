@@ -651,6 +651,7 @@ p {
 .variables {
   display: flex;
   align-items: center;
+  flex-wrap: wrap;
   -moz-column-gap: 20px;
        column-gap: 20px;
   background: rgb(227, 241, 255);
