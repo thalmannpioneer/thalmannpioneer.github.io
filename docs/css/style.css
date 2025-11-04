@@ -196,11 +196,14 @@ p {
   display: flex;
   position: relative;
   align-items: center;
-  -moz-column-gap: 494px;
-       column-gap: 494px;
+  -moz-column-gap: min(494px, 34.3055555556vw);
+       column-gap: min(494px, 34.3055555556vw);
 }
 .header__logo {
   display: flex;
+}
+.header__links {
+  flex-wrap: wrap;
 }
 
 .logo__img {
@@ -375,9 +378,11 @@ p {
 }
 
 .odd-section {
-  height: 420px;
   padding: 20px 0 45px 0;
   display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  row-gap: 20px;
   -moz-column-gap: 20px;
        column-gap: 20px;
 }
@@ -386,10 +391,12 @@ p {
 }
 
 .even-section {
-  height: 420px;
   padding: 20px 0 45px 0;
   display: flex;
+  justify-content: center;
   flex-direction: row-reverse;
+  flex-wrap: wrap;
+  row-gap: 20px;
   -moz-column-gap: 20px;
        column-gap: 20px;
 }
@@ -406,7 +413,7 @@ p {
 .section-text {
   display: flex;
   flex-direction: column;
-  width: 505px;
+  width: min(505px, 84.1666666667vw);
   row-gap: 20px;
 }
 .section-text__main-text {
@@ -420,13 +427,12 @@ p {
 }
 
 .first-section {
-  height: 520px;
   padding-top: 100px;
 }
 
 .sixth-section {
-  height: 220px;
   padding: 20px 0;
+  width: min(880px, 86.2745098039vw);
   display: flex;
   flex-direction: column;
   row-gap: 20px;
@@ -455,8 +461,11 @@ p {
 .cards {
   display: flex;
   align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
   -moz-column-gap: 20px;
        column-gap: 20px;
+  row-gap: 20px;
 }
 .cards__entry {
   width: 280px;

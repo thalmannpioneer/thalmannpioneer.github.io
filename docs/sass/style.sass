@@ -186,9 +186,11 @@ p
         display: flex
         position: relative
         align-items: center
-        column-gap: 494px
+        column-gap: min(494px, calc(494px * 100vw / 1440px))
     &__logo
         display: flex
+    &__links
+        flex-wrap: wrap
 
 .logo
     &__img
@@ -332,18 +334,22 @@ p
 //СТИЛИ ПЕРВОЙ СТРАНИЦЫ
 
 .odd-section
-    height: 420px
     padding: 20px 0 45px 0
     display: flex
+    justify-content: center
+    flex-wrap: wrap
+    row-gap: 20px
     column-gap: 20px
     &__img
         box-shadow: 4px 4px 10px $shadow
 
 .even-section
-    height: 420px
     padding: 20px 0 45px 0
     display: flex
+    justify-content: center
     flex-direction: row-reverse
+    flex-wrap: wrap
+    row-gap: 20px
     column-gap: 20px
     &__img
         box-shadow: -4px 4px 10px $shadow
@@ -356,7 +362,7 @@ p
 .section-text
     display: flex
     flex-direction: column
-    width: 505px
+    width: min(505px, calc(505px * 100vw / 600px))
     row-gap: 20px
     &__main-text
         display: flex
@@ -367,12 +373,11 @@ p
         padding-top: 35px
 
 .first-section
-    height: 520px
     padding-top: 100px
 
 .sixth-section
-    height: 220px
     padding: 20px 0
+    width: min(880px, calc(880px * 100vw / 1020px))
     display: flex
     flex-direction: column
     row-gap: 20px
@@ -399,7 +404,10 @@ p
 .cards
     display: flex
     align-items: flex-start
+    justify-content: center
+    flex-wrap: wrap
     column-gap: 20px
+    row-gap: 20px
     &__entry
         width: 280px
         border: 2px solid $card_border

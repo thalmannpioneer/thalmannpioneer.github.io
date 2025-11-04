@@ -4,6 +4,7 @@
 let startingOverlayContainer = document.getElementsByClassName("starting-overlay")[0];
 let qrContainer = document.getElementsByClassName("telegram-qr-overlay")[0];
 let clipboardNotificationContainer = document.getElementsByClassName("clipboard-notification")[0];
+let titles = document.getElementsByClassName("section-text__title");
 
 //функции
 function telegramQrShow() {
@@ -21,5 +22,9 @@ function discordIdCopy() {
 }
 
 //действия при загрузке
-startingOverlayContainer.classList.add("starting-overlay_hidden");
 localStorage.clear();
+
+startingOverlayContainer.classList.add("starting-overlay_hidden");
+
+if(window.innerWidth < 880) for(let title of titles) title.style.textAlign = "center";
+
