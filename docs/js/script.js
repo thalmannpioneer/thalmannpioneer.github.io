@@ -24,7 +24,7 @@ function discordIdCopy() {
 //действия при загрузке
 localStorage.clear();
 
-startingOverlayContainer.classList.add("starting-overlay_hidden");
+setTimeout(() => { startingOverlayContainer.classList.add("starting-overlay_hidden") }, 100);
 
 if(window.innerWidth < 880) for(let title of titles) title.style.textAlign = "center";
 

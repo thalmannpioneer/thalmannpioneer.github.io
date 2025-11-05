@@ -222,10 +222,10 @@ function clearEquation() {
 
 
 for(let input of matrixInputs) {
-    input.style.width = input.value.length * 21 + "px";
-    input.addEventListener("input", () => { input.style.width = input.value.length * 21 + "px"; })
+    input.style.width = input.value.length * 30 + "px";
+    input.addEventListener("input", () => { input.style.width = input.value.length * 30 + "px"; })
 }
 for(let input of resultantsInputs) {
-    input.style.width = input.value.length * 21 + "px";
-    input.addEventListener("input", () => { input.style.width = input.value.length * 21 + "px"; })
+    input.style.width = input.value.length * 30 + "px";
+    input.addEventListener("input", () => { input.style.width = input.value.length * 30 + "px"; })
 }
