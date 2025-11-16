@@ -16,6 +16,7 @@ $green_button: rgb(99, 194, 120)
 $full_button_hover: rgb(56, 92, 172)
 $green_button_hover: rgb(72, 136, 86)
 $equation_bg: rgb(227, 241, 255)
+$hoffman_output_bg: rgb(238, 238, 238)
 
 @font-face 
     font-family: Montserrat
@@ -596,3 +597,52 @@ p
     display: flex
     align-items: center
     column-gap: 10px
+
+
+//СТИЛИ ХАФФМАНА
+
+.hoffman-first-section
+    padding-top: 100px
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    row-gap: 20px
+    &__textarea
+        border: 2px solid black
+        border-radius: 10px
+        min-width: 10em
+        max-width: 100%
+        overflow: hidden
+        transition: all .4s ease
+    &__buttons
+        display: flex
+        column-gap: 10px
+
+.hoffman-second-section
+    padding-top: 20px
+    width: 100%
+    display: flex
+    flex-direction: column
+    align-items: flex-start
+    row-gap: 20px
+    transition: all .4s ease
+    visibility: visible
+    opacity: 1
+    &_hidden
+        visibility: hidden
+        opacity: 0
+    &__textarea
+        border: none
+        border-radius: 10px
+        min-width: 10em
+        max-width: 100%
+        background: $hoffman_output_bg
+    &__keys
+        border-radius: 10px
+        background: $hoffman_output_bg
+        padding: 5px
+
+.map-output
+    font-family: STIXTwoMath, serif
+    font-size: 36px
