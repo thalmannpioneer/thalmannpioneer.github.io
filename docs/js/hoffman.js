@@ -11,15 +11,6 @@ let secondSection = document.getElementsByClassName("hoffman-second-section")[0]
 
 
 //Функции
-function utf8Length(str) {
-    let encoder = new TextEncoder();
-    let utf8Bytes = encoder.encode(str);
-
-    let binaryRepresentations = Array.from(utf8Bytes).map(byte => {return byte.toString(2).padStart(8, '0');});
-
-    return binaryRepresentations.join("").length;
-}
-
 function computeString() {
     let lettersCount = new Map();
     let usedLetters = new Set();
@@ -69,7 +60,7 @@ function computeString() {
     }
 
     let stringOutput = "";
-    let compareLength = utf8Length(stringInput);
+    let compareLength = stringInput.length * 8;
     let mapOutput = "";
     
     for(let c of computedString) stringOutput += codes.get(c);
