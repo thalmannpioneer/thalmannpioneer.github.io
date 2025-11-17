@@ -39,9 +39,7 @@ function computeString() {
     
     lettersCountConv.sort(function(a, b) {return b[0] - a[0];});
 
-    if(lettersCountConv.length == 1) {
-        codes.set(lettersCountConv[0][1], "0");
-    }
+    if(lettersCountConv.length == 1) codes.set(lettersCountConv[0][1], "0");
     while(lettersCountConv.length > 1) {
         let newUnion = [
             lettersCountConv[lettersCountConv.length - 1][0] + lettersCountConv[lettersCountConv.length - 2][0],
@@ -56,11 +54,10 @@ function computeString() {
         lettersCountConv.push(newUnion);
         
         lettersCountConv.sort(function(a, b) {return b[0] - a[0];});
-        console.log(`${lettersCountConv}`);
     }
 
     let stringOutput = "";
-    let compareLength = stringInput.length * 8;
+    let compareLength = stringInput.value.length * 8;
     let mapOutput = "";
     
     for(let c of computedString) stringOutput += codes.get(c);
