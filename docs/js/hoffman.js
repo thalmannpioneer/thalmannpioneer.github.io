@@ -57,14 +57,15 @@ function computeString() {
             lettersCountConv[lettersCountConv.length - 1][1] + lettersCountConv[lettersCountConv.length - 2][1]
         ];
         
-        for(let c of lettersCountConv[lettersCountConv.length - 1][1]) codes.set(c, codes.get(c) + "0");
-        for(let c of lettersCountConv[lettersCountConv.length - 2][1]) codes.set(c, codes.get(c) + "1");
+        for(let c of lettersCountConv[lettersCountConv.length - 1][1]) codes.set(c, "0" + codes.get(c));
+        for(let c of lettersCountConv[lettersCountConv.length - 2][1]) codes.set(c, "1" + codes.get(c));
 
         lettersCountConv.pop();
         lettersCountConv.pop();
         lettersCountConv.push(newUnion);
         
         lettersCountConv.sort(function(a, b) {return b[0] - a[0];});
+        console.log(`${lettersCountConv}`);
     }
 
     let stringOutput = "";
