@@ -11,15 +11,6 @@ let secondSection = document.getElementsByClassName("hoffman-second-section")[0]
 
 
 //Функции
-function utf8Length(str) {
-    let encoder = new TextEncoder();
-    let utf8Bytes = encoder.encode(str);
-
-    let binaryRepresentations = Array.from(utf8Bytes).map(byte => {return byte.toString(2).padStart(8, '0');});
-
-    return binaryRepresentations.join("").length;
-}
-
 function computeString() {
     let lettersCount = new Map();
     let usedLetters = new Set();
@@ -48,9 +39,7 @@ function computeString() {
     
     lettersCountConv.sort(function(a, b) {return b[0] - a[0];});
 
-    if(lettersCountConv.length == 1) {
-        codes.set(lettersCountConv[0][1], "0");
-    }
+    if(lettersCountConv.length == 1) codes.set(lettersCountConv[0][1], "0");
     while(lettersCountConv.length > 1) {
         let newUnion = [
             lettersCountConv[lettersCountConv.length - 1][0] + lettersCountConv[lettersCountConv.length - 2][0],
@@ -65,11 +54,10 @@ function computeString() {
         lettersCountConv.push(newUnion);
         
         lettersCountConv.sort(function(a, b) {return b[0] - a[0];});
-        console.log(`${lettersCountConv}`);
     }
 
     let stringOutput = "";
-    let compareLength = utf8Length(stringInput);
+    let compareLength = stringInput.value.length * 8;
     let mapOutput = "";
     
     for(let c of computedString) stringOutput += codes.get(c);
