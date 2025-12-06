@@ -18,25 +18,25 @@ $green_button_hover: rgb(72, 136, 86)
 $equation_bg: rgb(227, 241, 255)
 $hoffman_output_bg: rgb(238, 238, 238)
 
-@font-face 
+@font-face
     font-family: Montserrat
     font-weight: 400
     font-style: normal
     src: url("../fonts/Montserrat-Regular.woff2")
 
-@font-face 
+@font-face
     font-family: Montserrat
     font-weight: 400
     font-style: italic
     src: url("../fonts/Montserrat-Italic.woff2")
 
-@font-face 
+@font-face
     font-family: Montserrat
     font-weight: 700
     font-style: normal
     src: url("../fonts/Montserrat-SemiBold.woff2")
 
-@font-face 
+@font-face
     font-family: Montserrat
     font-weight: 700
     font-style: italic
@@ -47,7 +47,6 @@ $hoffman_output_bg: rgb(238, 238, 238)
     font-weight: 400
     font-style: normal
     src: url("../fonts/STIXTwoMath-Regular.woff2")
-
 
 //ОБЩИЕ СТИЛИ
 
@@ -340,7 +339,6 @@ p
         padding: 10px
         border-radius: 10px
 
-
 //СТИЛИ ПЕРВОЙ СТРАНИЦЫ
 
 .odd-section
@@ -398,7 +396,6 @@ p
     &__title
         text-align: center
 
-
 //СТИЛИ ВТОРОЙ СТРАНИЦЫ
 
 .content-section
@@ -414,12 +411,14 @@ p
 .cards
     display: flex
     align-items: flex-start
-    justify-content: center
+    justify-content: flex-start
     flex-wrap: wrap
     column-gap: 20px
     row-gap: 20px
+    padding-bottom: 10px
     &__entry
         width: 280px
+        height: 390px
         border: 2px solid $card_border
         border-radius: 20px
         box-shadow: 4px 4px 10px 0 $shadow
@@ -438,7 +437,7 @@ p
         flex-direction: column
         row-gap: 10px
     &__buttons
-        margin: 20px auto 17px auto
+        margin: auto 0 17px 0
         display: flex
         justify-content: center
         width: 240px
@@ -451,7 +450,6 @@ p
         height: 23px
 #tig_github
     flex-grow: 3
-
 
 //СТИЛИ УРАВНЕНИЙ
 
@@ -597,7 +595,6 @@ p
     display: flex
     align-items: center
     column-gap: 10px
-
 
 //СТИЛИ ХАФФМАНА
 
